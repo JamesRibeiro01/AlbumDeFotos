@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
 import axios from "axios";
-import ItemFoto from "./ItemFoto";
-export default class ListaFoto extends Component {
+import Album from "./Album";
+export default class ListaAlbum extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,7 +24,7 @@ export default class ListaFoto extends Component {
     render() {
         return (
             <ScrollView>
-                {this.state.ListaItem.map(item => (<ItemFoto key = {item.albumId} propItem = {item} />))}
+                {this.state.ListaItem.map(item => (<Album key = {item.albumId} propItem = {item} />))}
             </ScrollView>
         );
     }
