@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-
-//<Image style = {{width: 100, height: 100}} source = {{uri: this.props.propItem.thumbnailUrl}} />
+import { View, Text } from 'react-native';
 
 export default class ItemFoto extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
   render() {
     return (
       <View>
-        <Text>sajdhsajdhgsj</Text>
+        <Text> ItemFoto </Text>
       </View>
     );
   }
