@@ -5,9 +5,12 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 export default class Album extends Component {
 
   render() {
+
+    const dados = this.props.propItem;
+
     return (
       <View style = {Estilo.container}>
-        <Text> Album </Text>
+        <FlatList data = {dados}  renderItem = {(item) => <Text style = {Estilo.textoItem}>{dados.title}</Text>}/>
       </View>
     );
   }
@@ -16,6 +19,14 @@ export default class Album extends Component {
 const Estilo = StyleSheet.create({
   container: {
     flex: 1
+  },
+
+  textoItem:{
+    fontSize: 20,
+    color: '#34495e',
+    padding: 25,
+    borderBottomWidth: 1,
+    borderColor: '#ccc'
   }
 });
 
