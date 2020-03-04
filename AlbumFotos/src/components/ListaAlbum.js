@@ -24,8 +24,10 @@ export default class ListaAlbum extends Component {
     render() {
         return (
             <ScrollView>
-                {this.state.ListaItem.map(item => (<Album key = {item.albumId} propItem = {item} />))}
+                <Text>sadkjsakjd</Text>
             </ScrollView>
         );
     }
 }
+
+//{this.state.ListaItem.map(item => (<Album key = {item.albumId} propItem = {item} />))}
