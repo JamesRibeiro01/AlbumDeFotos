@@ -19,8 +19,19 @@ export default class ListaAlbum extends Component {
 
   render() {
     return (
+
       <View>
-        {this.state.listaFotos.map(item => (<Album key = {item.albumId} novaListaAlbum = {item}/>))}
+        <StatusBar backgroundColor='grey' />
+        <FlatList data={this.state.listaFotos}
+          renderItem={({ item }) => {
+            return (
+              <View>
+              <Image source={{uri: item.thumbnailUrl}} />
+              </View>
+            )
+          }}
+          keyExtractor={(index) => { return index }}
+          numColumns={3} />
       </View>
     );
   }
