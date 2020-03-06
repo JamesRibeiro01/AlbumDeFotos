@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default class Album extends Component {
   constructor(props) {
@@ -10,20 +10,23 @@ export default class Album extends Component {
 
   render() {
     return (
+
+      <TouchableOpacity >
       <View style={Estilos.ContainerPrincipal}>
 
         <View style = {Estilos.containerThumb}>
 
           <View style={Estilos.imagemThumbnail}>
-            <Image style={{ width: 100, height: 100 }} source={{ uri: this.props.imagemAlbum.thumbnailUrl }} />
+            <Image style={{ width: 100, height: 100 }} source={{ uri: this.props.novaListaAlbum.thumbnailUrl }} />
           </View>
 
           <View>
-            <Text style={Estilos.titulo}>{this.props.imagemAlbum.albumId}</Text>
+            <Text style={Estilos.titulo}>{this.props.novaListaAlbum.albumId}</Text>
           </View>
 
         </View>
       </View>
+      </TouchableOpacity>
     );
   }
 }
