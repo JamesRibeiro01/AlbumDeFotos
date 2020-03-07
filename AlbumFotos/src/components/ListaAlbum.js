@@ -30,16 +30,20 @@ export default class ListaAlbum extends Component {
               <View>
 
                 <TouchableOpacity>
-                  <View style = {Estilos.imagemUrl}>
-                    <Image style={{ width: 100, height: 100 }} source={{ uri: item.imagemUrl }} />
+                  <View style={Estilos.imagemContainer}>
+                    <Image style={{ width: 100, height: 100 }} source={{ uri: item.url }} />
+                    <View style = {Estilos.titulo}>
+                      <Text>{item.title}</Text>
+                    </View>
                   </View>
+
                 </TouchableOpacity>
 
               </View>
             )
           }}
           keyExtractor={(item, index) => index.toString()}
-          numColumns={3} />
+          numColumns={1} />
       </View>
     );
   }
@@ -52,20 +56,19 @@ const Estilos = StyleSheet.create({
     flex: 1,
     paddingTop: 30,
   },
-  imagemUrl: {
+  imagemContainer: {
+    flex: 1,
+    borderWidth: 1.0,
+    borderColor: '#CCC',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 10,
+    margin: 60
   },
 
   titulo: {
     flex: 1,
-    fontSize: 14,
+    fontSize: 10,
     color: 'black'
-  },
-
-  containerThumb: {
-    flex: 1,
-    borderWidth: 1.0,
-    borderColor: '#CCC',
   }
 });
