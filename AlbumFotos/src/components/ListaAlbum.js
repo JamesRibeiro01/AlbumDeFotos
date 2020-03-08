@@ -32,14 +32,15 @@ export default class ListaAlbum extends Component {
   render() {
     return (
       <View style={FolhaEstilos.ContainerPrincipal}>
-        <StatusBar backgroundColor='grey' />
-        <FlatList data={this.state.listaFotos}
+
+        <FlatList 
+          data={this.state.listaFotos}
           numColumns={2}
           keyExtractor={(item) => { return item.id }}
           renderItem={({ item }) => {
             return (
               <View style={FolhaEstilos.cartao}>
-
+                
                 <TouchableOpacity>
                   <View style={FolhaEstilos.imagemContainer}>
                     <Image style={FolhaEstilos.imagem} source={{ uri: item.url }} />
@@ -52,8 +53,8 @@ export default class ListaAlbum extends Component {
               </View>
             )
           }}
-
         />
+
       </View>
     );
   }
