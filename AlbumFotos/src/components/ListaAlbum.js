@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, StatusBar, Image, StyleSheet, TouchableOpacity, Platform, ActivityIndicator, ToastAndroid } from 'react-native';
-import Album from "./Album";
 import axios from 'axios';
 
 export default class ListaAlbum extends Component {
@@ -11,13 +10,17 @@ export default class ListaAlbum extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
 
     return fetch("https://jsonplaceholder.typicode.com/photos")
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({ listaFotos: responseJson });
       }).catch((error) => { ToastAndroid.show(error.toString(), ToastAndroid.SHORT) });
+
+    // axios.get('https://jsonplaceholder.typicode.com/photos')
+    //      .then(response =>{this.setState({listaFotos: response.data})})
+    //      .catch(()=>{alert('error')})
   }
 
   render() {
@@ -25,25 +28,26 @@ export default class ListaAlbum extends Component {
       <View style={Estilos.ContainerPrincipal}>
         <StatusBar backgroundColor='grey' />
         <FlatList data={this.state.listaFotos}
+          numColumns={2}
+          keyExtractor={(item) => { return item.id }}
           renderItem={({ item }) => {
             return (
-              <View>
+              <View style = {Estilos.cartao}>
 
                 <TouchableOpacity>
                   <View style={Estilos.imagemContainer}>
-                    <Image style={{ width: 100, height: 100 }} source={{ uri: item.url }} />
-                    <View style = {Estilos.titulo}>
+                    <Image style={Estilos.imagem} source={{ uri: item.url }} />
+                    <View style={Estilos.titulo}>
                       <Text>{item.title}</Text>
                     </View>
                   </View>
-
                 </TouchableOpacity>
 
               </View>
             )
           }}
-          keyExtractor={(item, index) => index.toString()}
-          numColumns={1} />
+
+        />
       </View>
     );
   }
@@ -52,23 +56,35 @@ export default class ListaAlbum extends Component {
 
 const Estilos = StyleSheet.create({
   ContainerPrincipal: {
-    justifyContent: 'center',
-    flex: 1,
-    paddingTop: 30,
+   flex: 1,
+   marginTop: 20
   },
   imagemContainer: {
-    flex: 1,
-    borderWidth: 1.0,
-    borderColor: '#CCC',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    margin: 60
+    shadowColor: "#000",
+    shadowOffset:{
+      width: 0,
+      height: 4
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.36
   },
 
   titulo: {
     flex: 1,
     fontSize: 10,
     color: 'black'
+  },
+
+  imagem:{
+      flex: 1,
+      height: 150,
+      width: null
+  },
+
+  cartao:{
+    marginVertical: 8,
+    backgroundColor: 'white',
+    flexBasis: '45%',
+    marginHorizontal: 10
   }
 });
